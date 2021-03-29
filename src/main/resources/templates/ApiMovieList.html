@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Books</title>
+    <div th:replace="fragments/headerinc :: head"/>
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/header :: header"/>
+    <form class="form-horizontal" th:action="@{/books/title}" method="post">
+        <div class="form-group">
+            <label class="col-sm-1 control-label">Title:</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" name="title" th:value="${title}"/>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <div th:if="${not #lists.isEmpty(movies)}">
+        <h3>Book List</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="movie : ${movies}">
+                <td th:text="${movie.title}"><a th:href="www.imdb.com/title/${movie.id}"></a> </td>
+                <td><img th:src="${movie.image}" width="80px" height="120px" alt=""></td>
+                <td th:text="${movie.description}">Description</td>
+
+                <td><a th:href="${ '/books/'        + movie.id}">View</a></td>
+                <td><a th:href="${ '/books/edit/'   + movie.id}">Edit</a></td>
+                <td><a th:href="${ '/books/delete/' + movie.id}">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

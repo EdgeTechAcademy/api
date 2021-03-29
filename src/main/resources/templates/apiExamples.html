@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>APIS Gone Wild</title>
+    <div th:replace="fragments/headerinc :: head"/>
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/header :: header"/>
+    <label for="json">Show JSON</label>
+    <input type="checkbox" id="json">
+    <br>
+    <fieldset>
+        <legend>Search for Movies:</legend>
+        <label for="movie">Search Movies</label>
+        <input type="text" id="movie">
+        <button id="getMovies1">Get Movies AJAX Request</button>
+        <button id="getMovies2">Get Movies from Server</button>
+        <div id="movieList" class='grid-container'></div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Get the Weather Forecast:</legend>
+        <label for="allDays">Show Full Forecast:</label>
+        <input type="checkbox" id="allDays">
+        <label for="city">Get the Weather For:</label>
+        <input type="text" id="city" value='Fort Worth'>
+        <br>
+        <label for="lat">Latitude</label>
+        <input type="text" id="lat">
+        <label for="lon">Longitude</label>
+        <input type="text" id="lon">
+        <button id="getWeather">Get Weather</button>
+        <div id="weatherList" class='grid-container'></div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Astronomy Picture of the Day:</legend>
+        <label for="queryDate">NASA APOD</label>
+        <input type="date" id="queryDate">
+        <button id="getNasa">Get APOD for Date</button>
+        <div class='grid-container'>
+            <div class="grid-item">
+                <h2 id="date"></h2>
+                <h2 id="title"></h2>
+                <div id=media></div>
+                <p id="explanation"></p>
+            </div>
+        </div>
+    </fieldset>
+
+    <a href="https://github.com/EdgeTechAcademy/FetchExamples">Link to GitHub repo</a>
+    <script src="/js/apiExamples.js" type="module"></script>
+</div>
+</body>
+
+</html>
